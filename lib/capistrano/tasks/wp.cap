@@ -133,6 +133,7 @@ namespace :wp do
       invoke "wp:setup:remote"
       invoke "wp:setup:local"
     end
+
   end
 
   namespace :core do
