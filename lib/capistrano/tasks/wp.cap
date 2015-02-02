@@ -63,12 +63,17 @@ namespace :wp do
             puts <<-MSG
             \e[32m
             =========================================================================
-              WordPress has successfully been installed. Here are your login details:
-              
+              Success - WordPress has successfully been installed.
+
+              Here are your login details:
               Username:       #{user}
               Password:       #{password}
               Email address:  #{email}
               Log in at:      #{wp_siteurl}/wordpress/wp-admin
+
+              Once you've flushed your permalinks for the first time, you'll be able
+              to login at: #{wp_siteurl}/wp-admin. This can be done by going to
+              Settings->Permalinks in the WordPress Admin.
             =========================================================================
             \e[0m
             MSG
@@ -112,11 +117,17 @@ namespace :wp do
         puts <<-MSG
         \e[32m
         =========================================================================
-          WordPress has successfully been installed. Here are your login details:
-          
+          Success - WordPress has successfully been installed.
+
+          Here are your login details:
           Username:       #{user}
           Password:       #{password}
           Email address:  #{email}
+          Log in at:      #{wp_siteurl}/wordpress/wp-admin
+
+          Once you've flushed your permalinks for the first time, you'll be able
+          to login at: #{wp_siteurl}/wp-admin. This can be done by going to
+          Settings->Permalinks in the WordPress Admin.
         =========================================================================
         \e[0m
         MSG
@@ -155,7 +166,17 @@ namespace :wp do
       git checkout $latestTag
       ')
       invoke 'cache:repo:purge'
-      puts "WordPress submodule is now at the latest version. You should now commit your changes."
+
+      puts "
+      \e[32m
+      =========================================================================
+        Success - WordPress submodule is now at the latest version.
+
+        You should now commit your changes. You can do this by running the
+        following command: git commit -m \"Updated WordPress to version X.X\"
+      =========================================================================
+      \e[0m
+      "
 
     end
   end
@@ -182,9 +203,19 @@ def load_database_configuration(environment)
   else
     puts <<-MSG
     \e[31m
-      Incomplete database configuration specified and no config/database.yml
-      file found. Specify db_host, db_name, db_user and db_password options
-      or create a config/database.yml file. See the readme for more info.
+      =========================================================================
+        Error - Incomplete database details specified and no
+        config/database.yml file found.
+
+        Take one of the following steps:
+        1. Copy & Rename the config/database.example.yml file to database.yml
+        and then enter each environments details.
+        2. Enter the following parameters when you try to setup your
+        environment: db_host, db_name, db_user, db_password. This cannot be
+        done when you're running wp:setup:both.
+
+        See the README for more info - https://github.com/Mixd/wp-deploy
+      =========================================================================
     \e[0m
     MSG
 
