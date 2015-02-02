@@ -1,4 +1,4 @@
-# wp-deploy - Development (unstable) branch!
+# wp-deploy - Development (unstable) branch! Not meant for production sites.
 
 A framework for deploying WordPress projects with Capistrano:
 
