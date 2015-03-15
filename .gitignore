@@ -15,7 +15,6 @@ Thumbs.db
 # Wordpress files #
 ###################
 .htaccess
-xmlrpc.php
 sitemap.xml
 sitemap.xml.gz
 readme.html
